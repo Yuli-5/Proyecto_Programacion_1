@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         EntornoGui principal = new EntornoGui();
         Login login = new Login();
-        login.setBounds(20, 10, 650, 600);
+        login.setBounds(20, 10, 530, 600);
         login.setLocationRelativeTo(null);
         login.setVisible(true);  
       
