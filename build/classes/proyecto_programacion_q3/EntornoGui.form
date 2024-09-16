@@ -152,6 +152,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Listar Inventario"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInventariActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="Salir">
                       <Properties>
@@ -257,7 +260,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextPane" name="jTextPane1">
+                            <Component class="javax.swing.JTextPane" name="PanelInventario">
                             </Component>
                           </SubComponents>
                         </Container>
@@ -583,6 +586,9 @@
                               </Border>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>

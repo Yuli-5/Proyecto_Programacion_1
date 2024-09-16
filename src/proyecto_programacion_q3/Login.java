@@ -43,7 +43,7 @@ public class Login extends javax.swing.JFrame {
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -68,11 +68,11 @@ public class Login extends javax.swing.JFrame {
         label1.setText("ACCESO AL SISTEMA");
         jPanel3.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, 36));
 
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Book", 2, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Book", 1, 18)); // NOI18N
         jLabel3.setText("Ingrese su usuario:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, 41));
 
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Book", 2, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Book", 1, 18)); // NOI18N
         jLabel4.setText("Ingrese su contraseña:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, -1, 41));
 

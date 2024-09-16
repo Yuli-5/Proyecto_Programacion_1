@@ -4,17 +4,21 @@
  */
 package proyecto_programacion_q3;
 
+import Clases.Inventario;
+import Clases.Main;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Yuli
  */
 public class EntornoGui extends javax.swing.JFrame {
+    private ArrayList<Inventario> inventario;
 
-    /**
-     * Creates new form EntornoGui
-     */
     public EntornoGui() {
         initComponents();
+        inventario = new ArrayList();
     }
 
  
@@ -33,7 +37,7 @@ public class EntornoGui extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        PanelInventario = new javax.swing.JTextPane();
         jLabel10 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         IdProducto = new javax.swing.JTextField();
@@ -81,6 +85,11 @@ public class EntornoGui extends javax.swing.JFrame {
 
         btnInventari.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnInventari.setText("Listar Inventario");
+        btnInventari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventariActionPerformed(evt);
+            }
+        });
 
         Salir.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         Salir.setText("Salir");
@@ -135,7 +144,7 @@ public class EntornoGui extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 0));
 
-        jScrollPane2.setViewportView(jTextPane1);
+        jScrollPane2.setViewportView(PanelInventario);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,6 +236,11 @@ public class EntornoGui extends javax.swing.JFrame {
         btnAgregar.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         btnAgregar.setText("Agregar Producto");
         btnAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -472,7 +486,68 @@ public class EntornoGui extends javax.swing.JFrame {
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
         jTabbedPane2.setSelectedIndex(2);
+        
     }//GEN-LAST:event_buttonAgregarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        Main main = new Main();
+        String id = IdProducto.getText();
+        String nombre = NombreProducto.getText();
+        String descripcion = DescripcionProducto.getText();
+        String categoria = CategoriaProducto.getText();
+        String estado = EstadoProducto.getSelectedItem().toString();
+        String stock = StockProducto.getText();
+        String precioCosto = PrecioCosto.getText();
+        String precioVenta = PrecioVenta.getText();
+        String fecha = CaducidadProducto.getText();
+        if (nombre.isEmpty()|| descripcion.isEmpty()|| categoria.isEmpty() ||fecha.isEmpty() || id.isEmpty() || estado.isEmpty() || stock.isEmpty() || precioCosto.isEmpty() || precioVenta.isEmpty()) {
+            main.Mostrar();
+        }
+        else{
+            int num_id = Integer.parseInt(id);
+            int stock1 = Integer.parseInt(stock);
+            int precioC = Integer.parseInt(precioCosto);
+            int precioV = Integer.parseInt(precioVenta);
+            boolean  estados;
+            if (estado.equalsIgnoreCase("Disponible")) {
+                estados = true;
+            }
+            else {
+               estados = false;
+            }
+            Inventario nuevo = new Inventario(num_id, nombre, descripcion,categoria,estados,stock1,precioC,precioV,fecha);
+            inventario.add(nuevo);
+            main.Creado();
+        }         
+        
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnInventariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventariActionPerformed
+        jTabbedPane2.setSelectedIndex(1);
+        PanelInventario.setText("");
+        for (int i = 0; i < inventario.size(); i++) {
+            Inventario inventario2 = new Inventario();
+            int id = inventario2.getId();
+            String nombre = inventario2.getNombre();
+            String descripcion = inventario2.getDescripcion();
+            String categoria = inventario2.getCategoria();
+            boolean estado = inventario2.isEstado();
+            int stock = inventario2.getStock();
+            int precioC = inventario2.getPrecioCosto();
+            int precioV = inventario2.getPrecioVenta();
+            String fecha = inventario2.getFecha_caducidad();
+            String estados ="";
+            if (estado) {
+                estados = "Disponible";
+            }
+            else{
+                estados = "Agotado";
+            } 
+            
+            PanelInventario.setText(PanelInventario.getText()+ "Id: "+id +" |Nombre: "+ nombre + "  |Descripcion: " + descripcion + "  |Categoria: " + categoria + "  |Estado: " + estados +  "  |Stock: " + stock + "  |Precio Costo: " + precioC + "  |Precio Venta: " + precioV + "  |Fecha Caducidad: " + fecha +"\n"); 
+        }
+        
+    }//GEN-LAST:event_btnInventariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,6 +561,7 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> EstadoProducto;
     private javax.swing.JTextField IdProducto;
     private javax.swing.JTextField NombreProducto;
+    private javax.swing.JTextPane PanelInventario;
     private javax.swing.JTextField PrecioCosto;
     private javax.swing.JTextField PrecioVenta;
     private javax.swing.JButton Salir;
@@ -520,6 +596,5 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
