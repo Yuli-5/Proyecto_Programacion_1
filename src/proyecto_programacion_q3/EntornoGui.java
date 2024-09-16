@@ -4,11 +4,14 @@
  */
 package proyecto_programacion_q3;
 
+import Clases.Cliente;
 import Clases.Compra;
+import Clases.Empleado;
 import Clases.Inventario;
 import Clases.Main;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -17,10 +20,15 @@ import java.util.ArrayList;
 public class EntornoGui extends javax.swing.JFrame {
     private ArrayList<Inventario> inventario;
     private ArrayList<Compra> compras;
+    private ArrayList<Cliente> clientes;
+    private ArrayList<Empleado> empleados;
+    
     public EntornoGui() {
         initComponents();
         inventario = new ArrayList();
         compras = new ArrayList();
+        clientes = new ArrayList();
+        empleados = new ArrayList();
     }
 
  
@@ -93,25 +101,10 @@ public class EntornoGui extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         IdProducto2 = new javax.swing.JTextField();
-        NombreProducto2 = new javax.swing.JTextField();
-        CategoriaProducto2 = new javax.swing.JTextField();
-        StockProducto2 = new javax.swing.JTextField();
-        PrecioCosto2 = new javax.swing.JTextField();
-        PrecioVenta2 = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        DescripcionProducto2 = new javax.swing.JTextArea();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        EstadoProducto2 = new javax.swing.JComboBox<>();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
         btnAgregar2 = new javax.swing.JButton();
-        jLabel36 = new javax.swing.JLabel();
-        CaducidadProducto2 = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel24 = new javax.swing.JPanel();
         buttonAgregar1 = new javax.swing.JButton();
         btnInventari1 = new javax.swing.JButton();
@@ -741,54 +734,9 @@ public class EntornoGui extends javax.swing.JFrame {
             }
         });
 
-        NombreProducto2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        CategoriaProducto2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        StockProducto2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        PrecioCosto2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        PrecioVenta2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        jLabel28.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Descripcion Producto:");
-
         jLabel29.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Id Producto:");
-
-        jLabel30.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Nombre Producto:");
-
-        DescripcionProducto2.setColumns(20);
-        DescripcionProducto2.setRows(5);
-        jScrollPane7.setViewportView(DescripcionProducto2);
-
-        jLabel31.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Categoria Producto:");
-
-        jLabel32.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Stock Producto:");
-
-        EstadoProducto2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EstadoProducto2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Agotado" }));
-
-        jLabel33.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("Estado Producto:");
-
-        jLabel34.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Precio Costo del Producto:");
-
-        jLabel35.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Caducidad Producto:");
 
         btnAgregar2.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
         btnAgregar2.setText("Agregar Producto");
@@ -799,11 +747,18 @@ public class EntornoGui extends javax.swing.JFrame {
             }
         });
 
-        jLabel36.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("Precio Venta del Producto:");
-
-        CaducidadProducto2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -812,89 +767,24 @@ public class EntornoGui extends javax.swing.JFrame {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IdProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IdProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NombreProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CategoriaProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel20Layout.createSequentialGroup()
-                                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(StockProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(EstadoProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(PrecioCosto2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(81, 81, 81))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel20Layout.createSequentialGroup()
-                                        .addComponent(jLabel34)
-                                        .addGap(62, 62, 62)))
-                                .addGroup(jPanel20Layout.createSequentialGroup()
-                                    .addComponent(PrecioVenta2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(81, 81, 81)))
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CaducidadProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(205, 205, 205))
+                        .addGap(161, 161, 161)
+                        .addComponent(btnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 53, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel33))
+                .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IdProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EstadoProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(IdProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel32))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StockProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombreProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CategoriaProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(11, 11, 11)
-                        .addComponent(PrecioCosto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel36)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PrecioVenta2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CaducidadProducto2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -1546,7 +1436,7 @@ public class EntornoGui extends javax.swing.JFrame {
             String celular = compras2.getCelular();
             int num_cuenta = compras2.getNumCuenta();
             
-            PanelInventario.setText(PanelInventario.getText()+ "Id: "+id +" |Nombre del proveedor: "+ nombre_P + "  |Telefono: " + celular + "  |N° Cuenta: " + num_cuenta +"\n"); 
+            PanelProveedores.setText(PanelProveedores.getText()+ "Id: "+id +" |Nombre del proveedor: "+ nombre_P + "  |Telefono: " + celular + "  |N° Cuenta: " + num_cuenta +"\n"); 
             System.out.println("");
         }    }//GEN-LAST:event_btnListadoActionPerformed
 
@@ -1597,11 +1487,35 @@ public class EntornoGui extends javax.swing.JFrame {
         System.exit(0);    }//GEN-LAST:event_Salir2ActionPerformed
 
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
-        // TODO add your handling code here:
+        
+        jTabbedPane3.setSelectedIndex(2);
     }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     private void btnListarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEmpleadosActionPerformed
-        // TODO add your handling code here:
+         jTabbedPane3.setSelectedIndex(1);
+        PanelEmpleados.setText("");
+        for (int i = 0; i < empleados.size(); i++) {
+            Empleado empleado = empleados.get(i);
+            int id = empleado.getId();
+            String nombreEmpleado =empleado.getNombre();
+            String apellidos = empleado.getApellido();
+            boolean estado = empleado.isEstado();
+            String usuario = empleado.getUsuario();
+            String password = empleado.getContraseña();
+            String cargo = empleado.getCargo();
+            int sueldo = empleado.getSueldo();
+            String estados = "";
+            if (estado) {
+                estados +="Activo";
+            }
+            else{
+                estados = "Dado de baja";
+            }
+            
+            PanelEmpleados.setText(PanelEmpleados.getText()+ "Id: "+id +" |Nombre del empleado: "+ nombreEmpleado + "  |Apellidos: " + apellidos + "  |Estado: " + estados +  "  |Usuario: " + usuario + "  |COntraseña: " + password + "  |Cargo: " + cargo + "  |Sueldo: " + sueldo +"\n"); 
+            System.out.println("");
+        } 
+        
     }//GEN-LAST:event_btnListarEmpleadosActionPerformed
 
     private void Salir7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salir7ActionPerformed
@@ -1610,11 +1524,24 @@ public class EntornoGui extends javax.swing.JFrame {
     }//GEN-LAST:event_Salir7ActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        // TODO add your handling code here:
+        jTabbedPane6.setSelectedIndex(2);
+        
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnListadoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListadoClientesActionPerformed
-        // TODO add your handling code here:
+    jTabbedPane6.setSelectedIndex(1);
+    PanelClientes.setText("");
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente clientes2 = clientes.get(i);
+            int dni = clientes2.getDNI();
+            String nombre_C = clientes2.getNombre();
+            String apellidos = clientes2.getApellido();
+            int puntos = clientes2.getPuntos();
+            
+            PanelClientes.setText(PanelClientes.getText()+ "DNI: "+dni +" |Nombre del cliente: "+ nombre_C + "  |Apellidos: " + apellidos + "  |Puntos: " + puntos +"\n"); 
+            System.out.println("");
+        } 
+    
     }//GEN-LAST:event_btnListadoClientesActionPerformed
 
     private void Salir8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Salir8ActionPerformed
@@ -1627,11 +1554,52 @@ public class EntornoGui extends javax.swing.JFrame {
     }//GEN-LAST:event_DNIActionPerformed
 
     private void AgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClientesActionPerformed
-        // TODO add your handling code here:
+        Main main = new Main();
+        String dni = DNI.getText();
+        String nombrecliente = NombreCliente.getText();
+        String apellidos = Apellidos.getText();
+        int Puntos = 0;
+        if (dni.isEmpty()|| nombrecliente.isEmpty()|| apellidos.isEmpty()) {
+            main.Mostrar();
+        }
+        else{
+            int num_dni = Integer.parseInt(dni);
+            Cliente nuevo_cliente = new Cliente(num_dni, nombrecliente,apellidos,Puntos);
+            clientes.add(nuevo_cliente);
+            main.Creado();
+        }    
+        
     }//GEN-LAST:event_AgregarClientesActionPerformed
 
     private void AgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarEmpleadosActionPerformed
-        // TODO add your handling code here:
+        Main main = new Main();
+        Random random = new Random();
+        int id;
+        String nombreEmpleado =NombreEmpleado.getText();
+        String apellidos = ApellidosEmpleado.getText();
+        String estado = EstadoEmpleado.getSelectedItem().toString();
+        String usuario = Usuario.getText();
+        String password = Pass.getText();
+        String cargo = Cargo.getText();
+        String sueldo = Sueldo.getText();
+        if (estado.isEmpty()|| nombreEmpleado.isEmpty()|| apellidos.isEmpty()|| usuario.isEmpty() || password.isEmpty() || cargo.isEmpty() || sueldo.isEmpty()) {
+            main.Mostrar();
+        }
+        else{
+            boolean res;
+            id = random.nextInt(1000);
+            int salario = Integer.parseInt(sueldo);
+            if (estado.equalsIgnoreCase("Activo")) {
+                res = true;
+            }
+            else{
+                res = false;
+            }
+            Empleado nuevo_empleado = new Empleado(id, nombreEmpleado,apellidos,res, usuario, password, cargo, salario);
+            empleados.add(nuevo_empleado);
+            main.Creado();
+        }  
+        
     }//GEN-LAST:event_AgregarEmpleadosActionPerformed
 
     /**
@@ -1645,24 +1613,19 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField ApellidosEmpleado;
     private javax.swing.JTextField CaducidadProducto;
-    private javax.swing.JTextField CaducidadProducto2;
     private javax.swing.JTextField Cargo;
     private javax.swing.JTextField CategoriaProducto;
-    private javax.swing.JTextField CategoriaProducto2;
     private javax.swing.JTextField Cuenta;
     private javax.swing.JTextField DNI;
     private javax.swing.JTextArea DescripcionProducto;
-    private javax.swing.JTextArea DescripcionProducto2;
     private javax.swing.JComboBox<String> EstadoEmpleado;
     private javax.swing.JComboBox<String> EstadoProducto;
-    private javax.swing.JComboBox<String> EstadoProducto2;
     private javax.swing.JTextField IdProducto;
     private javax.swing.JTextField IdProducto2;
     private javax.swing.JTextField IdProveedor;
     private javax.swing.JTextField NombreCliente;
     private javax.swing.JTextField NombreEmpleado;
     private javax.swing.JTextField NombreProducto;
-    private javax.swing.JTextField NombreProducto2;
     private javax.swing.JTextField NombreProveedor;
     private javax.swing.JTextPane PanelClientes;
     private javax.swing.JTextPane PanelEmpleados;
@@ -1671,20 +1634,13 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JTextPane PanelProveedores;
     private javax.swing.JTextField Pass;
     private javax.swing.JTextField PrecioCosto;
-    private javax.swing.JTextField PrecioCosto2;
     private javax.swing.JTextField PrecioVenta;
-    private javax.swing.JTextField PrecioVenta2;
     private javax.swing.JButton Salir;
     private javax.swing.JButton Salir1;
     private javax.swing.JButton Salir2;
-    private javax.swing.JButton Salir3;
-    private javax.swing.JButton Salir4;
-    private javax.swing.JButton Salir5;
-    private javax.swing.JButton Salir6;
     private javax.swing.JButton Salir7;
     private javax.swing.JButton Salir8;
     private javax.swing.JTextField StockProducto;
-    private javax.swing.JTextField StockProducto2;
     private javax.swing.JTextField Sueldo;
     private javax.swing.JTextField Telefono;
     private javax.swing.JTextField Usuario;
@@ -1695,20 +1651,12 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnInventari;
     private javax.swing.JButton btnInventari1;
-    private javax.swing.JButton btnInventari2;
-    private javax.swing.JButton btnInventari3;
     private javax.swing.JButton btnListado;
-    private javax.swing.JButton btnListado1;
-    private javax.swing.JButton btnListado2;
     private javax.swing.JButton btnListadoClientes;
     private javax.swing.JButton btnListarEmpleados;
     private javax.swing.JButton btnProveedores;
-    private javax.swing.JButton btnProveedores1;
-    private javax.swing.JButton btnProveedores2;
     private javax.swing.JButton buttonAgregar;
     private javax.swing.JButton buttonAgregar1;
-    private javax.swing.JButton buttonAgregar2;
-    private javax.swing.JButton buttonAgregar3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1727,16 +1675,8 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -1765,10 +1705,6 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
-    private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
@@ -1782,8 +1718,8 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -1791,5 +1727,6 @@ public class EntornoGui extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
