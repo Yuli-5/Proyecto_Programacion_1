@@ -13,17 +13,17 @@ public class Compra {
     private String nombreProveedor;
     private String celular;
     private int numCuenta;
-    private int idCompra;
+   
 
     public Compra() {
     }
 
-    public Compra(int idProveedor, String nombreProveedor, String celular, int numCuenta, int idCompra) {
+    public Compra(int idProveedor, String nombreProveedor, String celular, int numCuenta) {
         this.idProveedor = idProveedor;
         this.nombreProveedor = nombreProveedor;
         this.celular = celular;
         this.numCuenta = numCuenta;
-        this.idCompra = idCompra;
+     
     }
 
     public int getIdProveedor() {
@@ -58,13 +58,6 @@ public class Compra {
         this.numCuenta = numCuenta;
     }
 
-    public int getIdCompra() {
-        return idCompra;
-    }
-
-    public void setIdCompra(int idCompra) {
-        this.idCompra = idCompra;
-    }
     
     
 }

@@ -25,10 +25,17 @@ public class Main {
         login.setVisible(true);  
       
     }
-     public void Mostrar(){
+    
+    public void Mostrar(){
         JOptionPane.showMessageDialog(null, "Su informacion esta incompleta revise de nuevo", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
     }
-        public void Creado(){
+    public void Creado(){
         JOptionPane.showMessageDialog(null, "Producto registrado correctamente", "Message", JOptionPane.INFORMATION_MESSAGE);
     }  
+    public void UsuarioIncorrecto(){
+        JOptionPane.showMessageDialog(null, "Su informacion esta incorrecta, usuario no existe", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+    }    
+    public void UsuarioCorrecto(){
+        JOptionPane.showMessageDialog(null, "Bienvenido", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+    } 
 }

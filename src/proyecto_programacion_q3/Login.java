@@ -4,16 +4,19 @@
  */
 package proyecto_programacion_q3;
 
+import Clases.Empleado;
+import Clases.Main;
+import java.util.ArrayList;
+
 /**
  *
  * @author Yuli
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    public ArrayList<Empleado> usuario;
     public Login() {
+        usuario = new ArrayList();
         initComponents();
     }
 
@@ -115,7 +118,23 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-
+        String username = txtUser.getText();
+        String password = txtPassword.getText();
+        Main main = new Main();
+        Empleado empleado = new Empleado(0,"Admin","Principal",true,"admin","1234","Administrador",1234);
+        usuario.add(empleado);
+        for (int i = 0; i < usuario.size(); i++) {
+            if (empleado.validar(username, password, usuario)){
+                main.UsuarioCorrecto();
+                EntornoGui principal = new EntornoGui();
+                principal.setLocationRelativeTo(null);
+                principal.setVisible(true);
+                this.setVisible(false);
+            } 
+            else {
+                main.UsuarioIncorrecto();
+            }
+        }
 
     }//GEN-LAST:event_btnIngresarActionPerformed
 

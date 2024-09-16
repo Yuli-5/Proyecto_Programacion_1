@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Yuli
@@ -99,7 +101,14 @@ public class Empleado {
     public void setSueldo(int sueldo) {
         this.sueldo = sueldo;
     }
-    
+        public boolean validar(String username, String password, ArrayList<Empleado> users){
+        for (Empleado user: users) {
+            if (user.getUsuario().equals(username)&& user.getContraseña().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     
     
